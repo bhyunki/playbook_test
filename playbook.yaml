@@ -27,7 +27,8 @@
         chdir: /tmp/freelec-springboot2-webservice
   
     - name: run web application with java
-      shell: java -jar build/libs/freelec-springboot2-webservice-1.0-SNAPSHOT.jar 1>/dev/null 2>&1 &
+      shell: java -jar build/libs/freelec-springboot2-webservice-1.0-SNAPSHOT.jar </dev/null >/dev/null 2>&1 &
+      poll: 0
       args:
         chdir: /tmp/freelec-springboot2-webservice
 

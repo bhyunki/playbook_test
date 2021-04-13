@@ -1,15 +1,20 @@
 ---
 - name: deploy test web applicaiton
-  hosts: localhost
+  hosts: all
   become: True
-  tasks:
+  pre_tasks:
+    - name: install sudo
+      dnf:
+        name:
+        - sudo
+        state: present
     - name: install the java-1.8.0-openjdk and devel packages
       dnf:
         name: 
         - java-1.8.0-openjdk
         - java-1.8.0-openjdk-devel
         state: present
-
+  tasks:
     - name: checkout remote git
       git:
         repo: 'https://github.com/tom721/freelec-springboot2-webservice'

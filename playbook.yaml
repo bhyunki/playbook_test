@@ -29,6 +29,5 @@
     - name: run web application with java
       shell: java -jar build/libs/freelec-springboot2-webservice-1.0-SNAPSHOT.jar &
       args:
-        executable: "/usr/bin/bash"
         chdir: /tmp/freelec-springboot2-webservice
 

@@ -3,11 +3,6 @@
   hosts: all
   become: True
   pre_tasks:
-    - name: install sudo
-      dnf:
-        name:
-        - sudo
-        state: present
     - name: install the java-1.8.0-openjdk and devel packages
       dnf:
         name: 
@@ -32,8 +27,8 @@
         chdir: /tmp/freelec-springboot2-webservice
   
     - name: run web application with java
-      shell: java -jar build/libs/freelec-springboot2-webservice-1.0-SNAPSHOT.jar
+      shell: java -jar build/libs/freelec-springboot2-webservice-1.0-SNAPSHOT.jar &
       args:
-        executable: "/bin/bash"
+        executable: "/usr/bin/bash"
         chdir: /tmp/freelec-springboot2-webservice
 

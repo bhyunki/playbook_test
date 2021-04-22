@@ -3,6 +3,11 @@
   hosts: all
   become: True
   pre_tasks:
+    - name: install git
+      dnf:
+        name:
+        - git
+        state: present
     - name: install the java-1.8.0-openjdk and devel packages
       dnf:
         name: 

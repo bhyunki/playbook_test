@@ -17,7 +17,7 @@
       when: snapshot_domain and jar_path
   
     - name: run web application with java
-      shell: "java -jar freelec-springboot2-webservice.jar </dev/null >/dev/null 2>&1 &"
+      shell: "nohup java -jar freelec-springboot2-webservice.jar </dev/null >/dev/null 2>&1 &"
       poll: 0
       args:
         chdir: /tmp/

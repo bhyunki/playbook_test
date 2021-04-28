@@ -12,12 +12,15 @@
   tasks:
     - name: download jar file for application from web
       get_url:
-        url: http://192.168.6.171:32000/repository/maven-snapshots/com/springboot/example/freelec-springboot2-webservice/1.0-SNAPSHOT/freelec-springboot2-webservice-1.0-20210426.071405-1.jar
+        url: "{{ snapshot_domain }}{{ jar_path }}"
         dest: /tmp/freelec-springboot2-webservice.jar
+      when: snapshot_domain and jar_path
+      register: result
   
     - name: run web application with java
       shell: java -jar freelec-springboot2-webservice.jar </dev/null >/dev/null 2>&1 &
       poll: 0
       args:
         chdir: /tmp/
+      when: result
 
